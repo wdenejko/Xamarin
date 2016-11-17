@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:local="clr-namespace:PhoneDial" 
+		x:Class="PhoneDial.PhoneDialPage"
+		BackgroundColor="#354242">
+	<Grid 
+			Padding="40"
+			RowSpacing="10"
+			ColumnSpacing="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Label Grid.Row="0" x:Name="NumberLabel" Grid.ColumnSpan="3" Text="1234" FontSize="50" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+		<Button Grid.Row="1" Grid.Column="0" Text="1" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="1" Grid.Column="1" Text="2" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="1" Grid.Column="2" Text="3" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="2" Grid.Column="0" Text="4" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="2" Grid.Column="1" Text="5" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="2" Grid.Column="2" Text="6" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="3" Grid.Column="0" Text="7" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="3" Grid.Column="1" Text="8" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="3" Grid.Column="2" Text="9" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="4" Grid.Column="1" Text="9" Clicked="Click" BackgroundColor="#fff" TextColor="#28282C" FontSize="30" BorderRadius="30"/>
+		<Button Grid.Row="5" Grid.ColumnSpan="3" Clicked="OnPhoneTapped" Text="Dial" BackgroundColor="#96ca2d" FontSize="30" BorderRadius="30" TextColor="Black"/>
+	</Grid>
+</ContentPage>
