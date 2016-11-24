@@ -24,8 +24,44 @@ namespace OcrApp
 			device = Resolver.Resolve<IDevice>();
 		}
 
+		public async void ChoosePictureClicked(object sender, EventArgs e) 
+		{
+			ChoosePictureButton.Text = "Working...";
+			TakePictureButton.IsEnabled = false;
+			ChoosePictureButton.IsEnabled = false;
+
+			if (!tesseractApi.Initialized)
+			{
+				await tesseractApi.Init("eng");
+			}
+
+			var photo = await SelectPicture();
+			if (photo != null)
+			{
+				var imageBytes = new byte[photo.Source.Length];
+				photo.Source.Position = 0;
+				photo.Source.Read(imageBytes, 0, (int)photo.Source.Length);
+				photo.Source.Position = 0;
+
+				TakenImage.Source = ImageSource.FromStream(() => photo.Source);
+				var tessResult = await tesseractApi.SetImage(imageBytes);
+				if (tessResult)
+				{
+					RecognizedTextLabel.Text = tesseractApi.Text;
+				}
+			}
+
+			ChoosePictureButton.Text = "...or choose from gallery";
+			TakePictureButton.IsEnabled = true;
+			ChoosePictureButton.IsEnabled = true;
+		}
+
 		public async void TakePictureClicked(object sender, EventArgs e) 
 		{
+			TakePictureButton.Text = "Working...";
+			TakePictureButton.IsEnabled = false;
+			ChoosePictureButton.IsEnabled = false;
+			
 			if (!tesseractApi.Initialized)
 			{
 				await tesseractApi.Init("eng");
@@ -46,6 +82,10 @@ namespace OcrApp
 					RecognizedTextLabel.Text = tesseractApi.Text;
 				}
 			}
+
+			TakePictureButton.Text = "Take a picture";
+			TakePictureButton.IsEnabled = true;
+			ChoosePictureButton.IsEnabled = true;
 		}
 
 		private async Task<MediaFile> TakePic()
@@ -55,6 +95,17 @@ namespace OcrApp
 				DefaultCamera = CameraDevice.Rear
 			};
 			var mediaFile = await device.MediaPicker.TakePhotoAsync(mediaStorageOptions);
+
+			return mediaFile;
+		}
+
+		private async Task<MediaFile> SelectPicture() 
+		{
+			var mediaFile = await device.MediaPicker.SelectPhotoAsync(new CameraMediaStorageOptions
+			{
+				DefaultCamera = CameraDevice.Rear,
+				MaxPixelDimension = 400
+			});
 
 			return mediaFile;
 		}
