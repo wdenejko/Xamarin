@@ -69,7 +69,8 @@ namespace VisionTest
 		{
 			var mediaFile = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
 			{
-				PhotoSize = PhotoSize.Large
+				PhotoSize = PhotoSize.Custom,
+				CustomPhotoSize = 50
 			});
 
 			return mediaFile;
@@ -79,7 +80,8 @@ namespace VisionTest
 		{
 			var mediaFile = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
 			{
-				PhotoSize = PhotoSize.Large
+				PhotoSize = PhotoSize.Custom,
+				CustomPhotoSize = 50
 			});
 
 			return mediaFile;

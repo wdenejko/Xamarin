@@ -9,7 +9,7 @@
 		</Grid.RowDefinitions>
 		<Image Grid.Row="0" x:Name="TakenImage" HorizontalOptions="Center"/>
 		<ScrollView Grid.Row="1">
-			<Label  x:Name="RecognizedTextLabel" FontSize="13" TextColor="White" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"/>
+			<Label  x:Name="RecognizedTextLabel" FontSize="13" TextColor="Black" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"/>
 		</ScrollView>
 		<Button Grid.Row="2" x:Name="TakePictureButton" Clicked="TakePictureClicked" Text="Take a picture" BackgroundColor="#25ba65" TextColor="White" />
 		<Button Grid.Row="3" x:Name="ChoosePictureButton" Clicked="ChoosePictureClicked" Text="...or choose from gallery" BackgroundColor="#25ba65" TextColor="White" />
