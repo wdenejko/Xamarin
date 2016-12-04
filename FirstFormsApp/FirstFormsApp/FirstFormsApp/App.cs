@@ -11,7 +11,8 @@ namespace FirstFormsApp
     {
         public App()
         {
-            MainPage = new GreetPage();
+            MainPage = new GridPage();
+
         }
 
         protected override void OnStart()
